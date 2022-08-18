@@ -46,17 +46,29 @@ The normal way to connect a character stream to a file is to create a File objec
 for the file.
 Then you can call the FileReader constructor to create a FileReader object and pass this 
 object to the BufferedReader constructor to create a BufferedReader object
-File f = new File("movies.txt");
+File f = new File("soccer.txt");
 BufferedReader in = new BufferedReader(
  new FileReader(f));
-Here a BufferedReader object is created to read the movies.txt file*.
+Here a BufferedReader object is created to read the soccer.txt file*.
 
     
     
-    
-    
-    
-    
+    Reading from a character stream
+To read a line from the file, you use the readLine method of the BufferedReader
+class.    
+After you read a line of data from the file, you can use Java’s string-handling 
+features to pull individual bits of data out of the line    
+In particular, you can use the 
+split method to separate the line into the individual strings that are separated 
+by tabs.    
+Here’s a routine that converts a line read from the soccer.txt file to the title 
+(a string), year (an int), and price (a double):
+String[] data = line.split("\t");
+String title = data[0];
+int year = Integer.parseInt(data[1]);
+double price = Double.parseDouble(data[2]);
+After the entire file is read, you can close the stream by calling the close method.
+in.close();    
     
     
     
